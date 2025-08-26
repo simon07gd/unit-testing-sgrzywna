@@ -1,7 +1,7 @@
 import { validateUserName } from 'tasks/task1/index';
 import { fetchIsUserNameAvailable } from 'tasks/task1/fetchIsUserNameValid';
 
-jest.mock('task2/fetchIsUserNameValid', () => ({
+jest.mock('task1/fetchIsUserNameValid', () => ({
   fetchIsUserNameAvailable: jest.fn(),
 }));
 
@@ -33,8 +33,8 @@ describe('task2', () => {
   it('returns false if user name is valid and not unique', async () => {
     mockedFetchIsUserNameAvailable.mockResolvedValueOnce(false);
 
-    await expect(validateUserName('jack')).resolves.toBe(false);
+    await expect(validateUserName('jacek')).resolves.toBe(false);
     expect(mockedFetchIsUserNameAvailable).toHaveBeenCalledTimes(1);
-    expect(mockedFetchIsUserNameAvailable).toHaveBeenCalledWith('John999');
+    expect(mockedFetchIsUserNameAvailable).toHaveBeenCalledWith('jacek');
   });
 });
