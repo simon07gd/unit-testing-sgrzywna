@@ -36,7 +36,7 @@ describe('QuantityValidator', () => {
 
     it('returns invalid and error if quantity is greater or equal threshold and not divisible by packageSize', () => {
       const result = validator.validate(10);
-      expect(result.isValid).toBe(null);
+      expect(result.isValid).toBe(false);
       expect(result.error).toBe(`quantity exceeds threshold and not divisible by ${testQuantity}`)
     });
   });
